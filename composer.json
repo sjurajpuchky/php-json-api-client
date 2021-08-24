@@ -1,0 +1,24 @@
+{
+  "name": "baba/json-api-client",
+  "type": "library",
+  "license": "GPL-2.0-only",
+  "authors": [
+    {
+      "name": "Juraj Puchký - BABA Tumise s.r.o.",
+      "email": "info@baba.bj"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "BABA\\JSON\\API\\Client": "src/"
+    }
+  },
+  "provide": {
+    "baba/json-api-client": "1.0.0"
+  },
+  "require": {
+    "php": ">=7.3",
+    "ext-json": "*",
+    "ext-curl": "*"
+  }
+}
