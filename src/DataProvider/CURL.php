@@ -60,7 +60,7 @@ class CURL implements IDataProvider
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $result = curl_exec($ch);
-        culr_close($ch);
+        curl_close($ch);
 
         return $result;
     }
