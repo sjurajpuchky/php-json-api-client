@@ -7,7 +7,7 @@ Simple PHP JSON Rest API Client
 composer require baba/json-api-client
 
 # Example
-```
+```PHP
   use BABA\JSON\API\Client\DataProvider\CURL;
   use BABA\JSON\API\Client\JsonRestApiClient;
   
