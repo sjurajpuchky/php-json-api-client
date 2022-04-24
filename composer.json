@@ -1,5 +1,6 @@
 {
-  "name": "baba/php-json-api-client",
+  "name": "baba/json-api-client",
+  "version": "1.0.1",
   "type": "library",
   "license": "GPL-2.0-only",
   "authors": [
@@ -12,9 +13,6 @@
     "psr-4": {
       "BABA\\JSON\\API\\Client\\": "src/"
     }
-  },
-  "provide": {
-    "baba/json-api-client": "1.0.1"
   },
   "require": {
     "php": ">=7.3",
