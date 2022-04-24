@@ -11,6 +11,7 @@ interface IDataProvider
     const METHOD_PUT = 2;
     const METHOD_DELETE = 3;
     const METHOD_HEAD = 4;
+    const METHOD_PATCH = 5;
 
     public function request($method, $url, $data = '', $headers = []): string;
 }

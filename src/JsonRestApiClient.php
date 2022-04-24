@@ -39,6 +39,12 @@ class JsonRestApiClient implements IApiClient
         return json_decode($result, $returnAsArray);
     }
 
+    public function patch($url, $data = '', $returnAsArray = false, $headers = [])
+    {
+        $result = $this->dataProviderClient->request(IDataProvider::METHOD_PATCH, $url, $data, $headers);
+        return json_decode($result, $returnAsArray);
+    }
+
     public function post($url, $data = '', $returnAsArray = false, $headers = [])
     {
         $result = $this->dataProviderClient->request(IDataProvider::METHOD_POST, $url, $data, $headers);

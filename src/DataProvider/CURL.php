@@ -38,6 +38,10 @@ class CURL implements IDataProvider
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
                 break;
+            case self::METHOD_PATCH:
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
+                break;
             case self::METHOD_HEAD:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "HEAD");
