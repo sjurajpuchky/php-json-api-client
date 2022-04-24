@@ -1,6 +1,7 @@
 {
   "name": "baba/json-api-client",
   "type": "library",
+  "version": "1.0.1",
   "license": "GPL-2.0-only",
   "authors": [
     {
