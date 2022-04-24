@@ -41,7 +41,6 @@ class CURL implements IDataProvider
             case self::METHOD_PATCH:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-                curl_setopt($ch, CURLOPT_PATCH, true);
                 break;
             case self::METHOD_HEAD:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
