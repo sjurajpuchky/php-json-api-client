@@ -14,7 +14,7 @@
     }
   },
   "provide": {
-    "baba/json-api-client": "1.0.0"
+    "baba/json-api-client": "1.0.1"
   },
   "require": {
     "php": ">=7.3",

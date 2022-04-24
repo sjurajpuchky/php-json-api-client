@@ -37,6 +37,8 @@ https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zak�
 
 1.0.0 - CURL Implemented
 
+1.0.1 - PATCH Implemented
+
 # Copyright
 
 &copy; 2021 BABA Tumise s.r.o.
