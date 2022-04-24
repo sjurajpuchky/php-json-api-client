@@ -13,9 +13,6 @@
       "BABA\\JSON\\API\\Client\\": "src/"
     }
   },
-  "provide": {
-    "baba/json-api-client": "1.0.1"
-  },
   "require": {
     "php": ">=7.3",
     "ext-json": "*",
