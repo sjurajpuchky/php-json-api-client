@@ -44,7 +44,7 @@ class CURL implements IDataProvider
                 break;
             case self::METHOD_HEAD:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "HEAD");
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
                 curl_setopt($ch, CURLOPT_HEADER, true);
                 break;
             default:

@@ -24,7 +24,7 @@ class JsonRestApiClient implements IApiClient
 
     public function head($url, $returnAsArray = false, $headers = [])
     {
-        throw new \Exception("Not supported yet");
+        return $this->dataProviderClient->request(IDataProvider::METHOD_HEAD, $url, '', $headers);
     }
 
     public function delete($url, $data = '', $returnAsArray = false, $headers = [])
