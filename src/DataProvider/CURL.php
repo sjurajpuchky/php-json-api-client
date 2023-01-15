@@ -80,23 +80,21 @@ class CURL implements IDataProvider
         }
 
         if($withHeaders) {
-            curl_setopt($ch,CURLOPT_HEADER, true);
-            $response = curl_exec($ch);
-            $headers = array();
-
-            $header_text = substr($response, 0, strpos($response, "\r\n\r\n"));
-            $content_text = substr($response, strpos($response, "\r\n\r\n"));
-
-            foreach (explode("\r\n", $header_text) as $i => $line)
-                if ($i === 0)
-                    $headers['http_code'] = $line;
-                else
+            $headers =  [];
+            curl_setopt($ch, CURLOPT_HEADERFUNCTION,
+                function($curl, $header) use (&$headers)
                 {
-                    list ($key, $value) = explode(': ', $line);
+                    $len = strlen($header);
+                    $header = explode(':', $header, 2);
+                    if (count($header) < 2)
+                        return $len;
 
-                    $headers[$key] = $value;
+                    $headers[strtolower(trim($header[0]))][] = trim($header[1]);
+
+                    return $len;
                 }
-
+            );
+            $content_text = curl_exec($ch);
             return [$headers, $content_text];
         } else {
             $result = curl_exec($ch);
