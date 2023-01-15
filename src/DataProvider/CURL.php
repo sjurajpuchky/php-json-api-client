@@ -71,6 +71,7 @@ class CURL implements IDataProvider
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
         if($withHeaders) {
             curl_setopt($ch,CURLOPT_HEADER, true);
