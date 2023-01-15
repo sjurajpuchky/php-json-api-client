@@ -8,14 +8,16 @@ use BABA\JSON\API\Client\IDataProvider;
 class CURL implements IDataProvider
 {
     private $ignoreSSL;
+    private $verbose;
 
     /**
      * CURL constructor.
      * @param bool $ignoreSSL
      */
-    public function __construct(bool $ignoreSSL = true)
+    public function __construct(bool $ignoreSSL = true, bool $verbose = false)
     {
         $this->ignoreSSL = $ignoreSSL;
+        $this->verbose = $verbose;
     }
 
     /**
@@ -72,6 +74,10 @@ class CURL implements IDataProvider
         }
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+        if($this->verbose) {
+            curl_setopt($ch, CURLOPT_VERBOSE, true);
+        }
 
         if($withHeaders) {
             curl_setopt($ch,CURLOPT_HEADER, true);
