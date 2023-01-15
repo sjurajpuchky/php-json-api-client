@@ -43,6 +43,8 @@ https://www.webtrace.cz - Tvorba portálů a ecommerce b2b/b2c (eshopů) na zak�
 
 1.0.3 - RETURN HEADERS on GET Optionally
 
+1.0.4 - MINOR FIXES, ADDED VERBOSE SUPPORT
+
 # Copyright
 
 &copy; 2021 BABA Tumise s.r.o.
