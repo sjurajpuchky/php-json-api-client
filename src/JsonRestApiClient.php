@@ -16,10 +16,15 @@ class JsonRestApiClient implements IApiClient
         $this->dataProviderClient = $dataProviderClient;
     }
 
-    public function get($url, $returnAsArray = false, $headers = [])
+    public function get($url, $returnAsArray = false, $headers = [], $withHeaders = false)
     {
-        $result = $this->dataProviderClient->request(IDataProvider::METHOD_GET, $url, '', $headers);
-        return json_decode($result, $returnAsArray);
+        if ($withHeaders) {
+            list($headers,$result) = $this->dataProviderClient->request(IDataProvider::METHOD_GET, $url, '', $headers, $withHeaders);
+            return [$headers, json_decode($result, $returnAsArray)];
+        } else {
+            $result = $this->dataProviderClient->request(IDataProvider::METHOD_GET, $url, '', $headers, $withHeaders);
+            return json_decode($result, $returnAsArray);
+        }
     }
 
     public function head($url, $returnAsArray = false, $headers = [])
