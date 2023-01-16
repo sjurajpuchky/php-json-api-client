@@ -39,6 +39,7 @@ class CURL implements IDataProvider
                 break;
             case self::METHOD_GET:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
                 break;
             case self::METHOD_PUT:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -72,7 +73,11 @@ class CURL implements IDataProvider
         if (!empty($data)) {
             curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         }
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        $prepared_headers = [];
+        foreach($headers as $name => $value) {
+            $prepared_headers[] = $name.': '.$value;
+        }
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $prepared_headers);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         curl_setopt($ch,CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
         if($this->verbose) {
