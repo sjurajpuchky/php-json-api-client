@@ -43,6 +43,7 @@ class CURL implements IDataProvider
                 break;
             case self::METHOD_PUT:
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
                 curl_setopt($ch, CURLOPT_PUT, true);
                 break;
             case self::METHOD_DELETE:
