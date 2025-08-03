@@ -25,10 +25,11 @@ class CURL implements IDataProvider
      * @param $url
      * @param $data
      * @param $headers
-     * @param $withHeaders
+     * @param bool $withHeaders
+     * @param int|null $timeout
      * @return array|bool|string
      */
-    public function request($method, $url, $data = '', $headers = [], $withHeaders = false)
+    public function request($method, $url, $data = '', $headers = [], $withHeaders = false, $timeout = null)
     {
         $ch = curl_init($url);
 
@@ -63,7 +64,15 @@ class CURL implements IDataProvider
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         }
 
-        if($this->ignoreSSL) {
+        if ($timeout) {
+            // Connection timeout (seconds)
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+
+            // Overall timeout (seconds)
+            curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+        }
+
+        if ($this->ignoreSSL) {
             curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         } else {
