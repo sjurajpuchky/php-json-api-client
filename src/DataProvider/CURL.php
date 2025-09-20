@@ -114,6 +114,18 @@ class CURL implements IDataProvider
         } else {
             $result = curl_exec($ch);
         }
+
+        if ($result === false) {
+            $errno = curl_errno($ch);
+            $error = curl_error($ch);
+
+            if ($errno === CURLE_OPERATION_TIMEDOUT /* 28 */) {
+                // handle timeout specifically
+                throw new \RuntimeException("cURL timeout: $error", $errno);
+            } else {
+                throw new \RuntimeException("cURL error: $error", $errno);
+            }
+        }
         curl_close($ch);
 
 
